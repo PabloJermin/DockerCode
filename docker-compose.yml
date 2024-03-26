@@ -3,13 +3,13 @@ services:
   todo:
     build: .
     volumes:
-      - . : /app/
+      - ./DockerCode : /app/
     ports:
       - 3000:80
   web:
     image: php:apache
     volumes:
-      - .:/var/www/html
+      - ./DockerCode : /var/www/html
     ports:
       - 3001:80
     depends_on:
