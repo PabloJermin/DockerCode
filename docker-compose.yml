@@ -3,14 +3,19 @@ services:
   todo:
     build: .
     volumes:
-      - ./DockerCode : /usr/src/app
+      - type: bind
+        source: ./DockerCode
+        target: /app/
     ports:
       - 3000:80
   web:
     image: php:apache
     volumes:
-      - ./DockerCode : /var/www/html
+      - type: bind
+        source: ./DockerCode
+        target: /app/
     ports:
       - 3001:80
     depends_on:
       - todo
+  
